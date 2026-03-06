@@ -1,0 +1,26 @@
+{
+    "name": "Python, C++, LaTeX",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        // 安装 Python 3（默认最新版）
+        "ghcr.io/devcontainers/features/python:1": {},
+        // 安装 LaTeX（完整版，包含所有宏包，约2-3GB）
+        "ghcr.io/devcontainers/features/texlive:1": {
+            "scheme": "full"   // 如果空间敏感可改为 "basic" 或 "medium"
+        }
+    },
+    // 安装 C++ 编译工具链（g++, gdb, make, cmake）
+    "postCreateCommand": "sudo apt update && sudo apt install -y g++ gdb make cmake",
+    // 安装 VS Code 插件（提供代码提示、调试、LaTeX 编译等）
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-vscode.cpptools",
+                "ms-vscode.cmake-tools",
+                "james-yu.latex-workshop"
+            ]
+        }
+    },
+    "remoteUser": "vscode"
+}
